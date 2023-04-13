@@ -16,7 +16,7 @@ const Register = () => {
     const [mobile, setMobile] = useState("");
     const [username, setName] = useState("");
 
-    const [errorMsg, setErrorMsg] = useState(false);
+    const [errorMsg, setErrorMsg] = useState("");
 
     const changeHandler = (event) => {
         const { value, name } = event.target;
@@ -38,7 +38,11 @@ const Register = () => {
             .then((resp) => {
                 navigate('/login');
             })
-            .catch((error) => { console.log(error); setErrorMsg(true) })
+            .catch((error) => {
+                const obj = error.response.data.error.errors;
+                const err = Object.values(obj)[0];
+                setErrorMsg(err)
+             })
     }
     return (
         <div>
@@ -71,8 +75,10 @@ const Register = () => {
                         <HStack>
                             <Button mt={4} backgroundColor={"black"} onClick={() => submitHandeler()} colorScheme='twitter' >
                                 Submit
-                            </Button>
+                                </Button>
+                                {errorMsg.length > 0 && <div className='error'>{errorMsg}</div>}       
                         </HStack>
+                        
                     </CardBody>
                 </Card>
             </div>
