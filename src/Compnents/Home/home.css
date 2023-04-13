@@ -1,5 +1,8 @@
 .home-container {
-    height: 93vh;
+    border-top: 3.5px solid yellow;
+    border-bottom: 5px solid yellow;
+    
+    height: 95vh;
     justify-content: center;
     align-items: center;
     padding: 5px;

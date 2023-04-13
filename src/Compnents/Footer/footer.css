@@ -8,12 +8,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-top: 5px solid yellow;
 } 
 
 .footer-heading {
     text-align: center;
     font-size: x-large;
     width: 40%;
+    color : yellow;
 }
 
 .footer-links {

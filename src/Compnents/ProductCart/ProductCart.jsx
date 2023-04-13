@@ -78,7 +78,7 @@ const ProductCart = ({ image, description, title, price, id }) => {
         }
     }
     return (
-        <Card maxW='sm' >
+        <Card maxW='sm' className='product-cart'>
             <CardBody>
                 <Image
                     src={imageUrl}
