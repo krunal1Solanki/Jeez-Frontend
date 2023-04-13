@@ -18,10 +18,8 @@ import { client } from '../../Client';
 import { useToast } from '@chakra-ui/react';
 
 
-
 const MyCart = ({ id, title, image, quantity, unitPrice, setPrice, price }) => {
-    console.log(quantity, unitPrice);
-    console.log(document.cookie.indexOf('connect.sid'));
+   
     const [myQuantity, setMyQuantity] = useState(quantity);
     const [processedImage, setImageUrl] = useState('');
     const [letLoad, setLoad] = useState(false);
@@ -32,8 +30,7 @@ const MyCart = ({ id, title, image, quantity, unitPrice, setPrice, price }) => {
         if (image) {
             const blob = new Blob([new Uint8Array(image)], { type: 'image/png' });
             setImageUrl(URL.createObjectURL(blob));
-        }
-    }, []);
+        }    }, []);
 
     const addToCart = () => {
         setLoad(true);
@@ -93,7 +90,7 @@ const MyCart = ({ id, title, image, quantity, unitPrice, setPrice, price }) => {
             });
     };
     return (
-        <Card
+    <Card
             direction={{ base: 'column', sm: 'row' }}
             overflow='hidden'
             variant='outline'
@@ -133,7 +130,6 @@ const MyCart = ({ id, title, image, quantity, unitPrice, setPrice, price }) => {
 
             </Stack>
         </Card>
-
     )
 }
 

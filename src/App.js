@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import AddProduct from './Compnents/Add Product/AddProduct'
 import FeaturedProducts from './Compnents/Featured Products/FeaturedProducts'
@@ -11,15 +11,16 @@ import Products from './Compnents/Products/Products'
 import ProtectedRoute from './Compnents/ProtectedRoute/ProtectedRoute'
 import Register from './Compnents/Regsiter/Register'
 
-const App = () => {
+const App = () => { 
+  const [auth, setAuth] = useState(false);
   return (
     <>
-    <Header/>
+    <Header auth = {auth} setAuth = {setAuth} />
     <Routes>
       <Route path = '/' element={<Home/>}/>
       <Route path = '/products' element={<Products/>}/>
       <Route path = '/my-carts' element={<ProtectedRoute Component={MyCartsPage}/>}/>
-      <Route path = '/login' element={<Login/>}/>
+      <Route path = '/login' element={<Login auth = {auth} setAuth = {setAuth}/>}/>
       <Route path = '/register' element={<Register/>}/>
       <Route path = '/featured-product' element={<FeaturedProducts/>}/>
       <Route path = '/add-product' element={<ProtectedRoute Component={AddProduct}/>}/>

@@ -13,7 +13,6 @@ const FeaturedProducts = () => {
         <>
             <div className='feature-cart'>
                 {
-
                     featured.map((item) => {
                         return <div className='feature' key={item._id}>
                             <ProductCart id={item._id} description={item.description} title={item.name} image={item.image.data} price={item.unitPrice} />

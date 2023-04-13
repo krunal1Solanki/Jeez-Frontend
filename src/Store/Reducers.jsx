@@ -1,5 +1,5 @@
 import { INITIAL_STORE } from "./Store";
-import { FETCH_PRODUCTS, FETCH_MYCART, ADD_TO_CART} from "./Actions";
+import { FETCH_PRODUCTS, FETCH_MYCART, ADD_TO_CART, IS_AUTH} from "./Actions";
 export const reducer = (state = INITIAL_STORE, action) => {
     switch (action.type) {
         case FETCH_PRODUCTS: 
@@ -9,7 +9,7 @@ export const reducer = (state = INITIAL_STORE, action) => {
             const newCart = action.data;
             return {...state, myCart : newCart};
         case ADD_TO_CART:
-            return state;    
+            return state;  
         default:
             return state;
     }

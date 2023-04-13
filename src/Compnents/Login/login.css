@@ -5,7 +5,12 @@
     height: 89vh;
     background: dodgerblue;
 }
-
+.bottom { 
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 body {
     background-color: dodgerblue;
 }

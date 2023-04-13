@@ -7,9 +7,10 @@ import { useDispatch } from 'react-redux/es/exports'
 import './login.css'
 import { client } from '../../Client'
 import { FETCH_MYCART, FETCH_PRODUCTS } from '../../Store/Actions'
+import Header from '../Header/Header'
 
 
-const Login = () => {
+const Login = ({setAuth}) => {
     const navigate = useNavigate();
     const [show, setShow] = useState(false)
     const handleClick = () => setShow(!show)
@@ -32,7 +33,7 @@ const Login = () => {
                         data: resp.data.data,
                     })
                 }
-                );
+            );
         } catch (error) {
             console.log(error);
         }
@@ -46,6 +47,7 @@ const Login = () => {
         client
             .post("/user/login", body)
             .then((resp) => {
+                setAuth(true);
                 fetchMyCartData();
                 navigate('/');
             })
@@ -81,19 +83,17 @@ const Login = () => {
                                     </Button>
                                 </InputRightElement>
                             </InputGroup>
-                            <HStack>
+                            <HStack className='bottom'>
                                 <Button mt={2} backgroundColor={"black"} onClick={() => submitHandeler()} colorScheme='twitter' >
                                     Submit
                                 </Button>
-                                {errorMsg &&
-                                    <Text>Don't have an account? <a href="/register">Register here</a></Text>
-                                }
+                                <Button onClick={()=> navigate('/register')} colorScheme='twitter' >Register here</Button>
                             </HStack>
                         </CardBody>
+                        <Button mt={2} disabled _hover={'black'} backgroundColor={"black"} onClick={() => submitHandeler()} colorScheme='twitter' >     
+                        </Button>
                     </Card>
                 </div>
-
-
             )}
         </div>
     )

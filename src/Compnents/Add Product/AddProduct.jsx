@@ -5,9 +5,11 @@ import { useState } from 'react'
 import { client } from '../../Client'
 import './addProduct.css'
 import { useToast } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom'
 
 const AddProduct = () => {
   const toast = useToast();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     quantity: null,
     unitPrice: null,
@@ -39,12 +41,13 @@ const AddProduct = () => {
     )
       .then((resp) => {
         toast({
-          title: 'Added to cart.',
-          description: "Jeez, You are ready to rock !",
+          title: 'Product Added Successfully.',
+          description: "Jeez, Fashion Loaded !",
           status: 'success',
           duration: 2000,
           isClosable: true,
         })
+        
       })
       .catch((error) => {
         toast({
@@ -54,7 +57,10 @@ const AddProduct = () => {
           duration: 2400,
           isClosable: true,
         })
-      });
+      })
+      .finally(()=> {
+        navigate('/add-product')
+      })
   };
 
 
