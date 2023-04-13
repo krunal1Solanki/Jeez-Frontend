@@ -18,7 +18,6 @@ const MyCartsPage = () => {
     }, []);
 
     return (
-        // all cart items
         <div className = 'main-page-products'>
             <div className='products-page'>
                 {

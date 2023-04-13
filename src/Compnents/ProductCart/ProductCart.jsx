@@ -5,7 +5,7 @@ import { client } from '../../Client';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { FETCH_MYCART } from '../../Store/Actions';
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useToast } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,6 +13,8 @@ const ProductCart = ({ image, description, title, price, id }) => {
     const toast = useToast();
     const [imageUrl, setImageUrl] = useState(null);
     const dispatch = useDispatch();
+    const [letLoad, setLoad] = useState(false);
+
     useEffect(() => {
         if (image) {
             const imageUrl = `data:image/png;base64,${image}`;
@@ -24,6 +26,7 @@ const ProductCart = ({ image, description, title, price, id }) => {
     const rupee = '\u20B9';
 
     const addToCart = () => {
+        setLoad(true)
         client.post(`cart/add-to-cart?productId=${id}`)
             .then((resp) => {
                 toast({
@@ -37,7 +40,7 @@ const ProductCart = ({ image, description, title, price, id }) => {
             })
             .catch((err) => {
                 console.log(err.message);
-                if(err.message == 'Request failed with status code 401') {
+                if (err.message == 'Request failed with status code 401') {
                     navigate('/login');
                     toast({
                         title: 'Please Login First.',
@@ -56,7 +59,8 @@ const ProductCart = ({ image, description, title, price, id }) => {
                         isClosable: true,
                     })
                 }
-        })
+            })
+            .finally(()=> setLoad(false))
     };
 
     const fetchMyCartData = () => {
@@ -77,7 +81,6 @@ const ProductCart = ({ image, description, title, price, id }) => {
         <Card maxW='sm' >
             <CardBody>
                 <Image
-                    // src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
                     src={imageUrl}
                     alt='Green double couch with wooden legs'
                     borderRadius='lg'
@@ -97,8 +100,8 @@ const ProductCart = ({ image, description, title, price, id }) => {
             </CardBody>
             <Divider />
             <CardFooter >
-                <ButtonGroup  spacing='7'>
-                    <Button variant='ghost' onClick={() => addToCart()} colorScheme='blue'>
+                <ButtonGroup spacing='7'>
+                    <Button variant='ghost' isLoading = {letLoad} onClick={() => addToCart()} colorScheme='blue'>
                         Add to cart
                     </Button>
                 </ButtonGroup>

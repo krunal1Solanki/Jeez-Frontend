@@ -6,7 +6,6 @@ export const reducer = (state = INITIAL_STORE, action) => {
             const newProducts = [...state.products, ...action.data];
             return {...state, products: newProducts};
         case FETCH_MYCART:     
-            console.log('my data data in reducer', action.data);
             const newCart = action.data;
             return {...state, myCart : newCart};
         case ADD_TO_CART:

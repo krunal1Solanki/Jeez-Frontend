@@ -1,14 +1,13 @@
 import React from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
 import { Card, CardHeader, CardBody, Heading, CardFooter } from '@chakra-ui/react'
-import { Input, HStack, Stack, Text, InputRightElement, Button, InputGroup } from '@chakra-ui/react'
+import { Input, Stack,  Button,  } from '@chakra-ui/react'
 import { useState } from 'react'
 import { client } from '../../Client'
 import './addProduct.css'
 import { useToast } from '@chakra-ui/react';
 
 const AddProduct = () => {
-    const toast = useToast();
+  const toast = useToast();
   const [formData, setFormData] = useState({
     quantity: null,
     unitPrice: null,
@@ -37,27 +36,27 @@ const AddProduct = () => {
 
     client
       .post('/product/add-product', body,
-      )
+    )
       .then((resp) => {
         toast({
-            title: 'Added to cart.',
-            description: "Jeez, You are ready to rock !",
-            status: 'success',
-            duration: 2000,
-            isClosable: true,
+          title: 'Added to cart.',
+          description: "Jeez, You are ready to rock !",
+          status: 'success',
+          duration: 2000,
+          isClosable: true,
         })
-    })
+      })
       .catch((error) => {
         toast({
-            title: 'Error Ouccured!',
-            description: "Whoops, devils work!",
-            status: 'warning',
-            duration: 2400,
-            isClosable: true,
+          title: 'Error Ouccured!',
+          description: "Whoops, devils work!",
+          status: 'warning',
+          duration: 2400,
+          isClosable: true,
         })
       });
   };
-      
+
 
 
   return (

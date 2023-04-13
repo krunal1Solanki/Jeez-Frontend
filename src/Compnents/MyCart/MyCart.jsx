@@ -19,13 +19,13 @@ import { useToast } from '@chakra-ui/react';
 
 
 
-const MyCart = ({ id, title, image, quantity, unitPrice, setPrice, price}) => {
+const MyCart = ({ id, title, image, quantity, unitPrice, setPrice, price }) => {
     console.log(quantity, unitPrice);
     console.log(document.cookie.indexOf('connect.sid'));
     const [myQuantity, setMyQuantity] = useState(quantity);
     const [processedImage, setImageUrl] = useState('');
     const [letLoad, setLoad] = useState(false);
-    const toast = useToast();   
+    const toast = useToast();
 
 
     useEffect(() => {
@@ -79,7 +79,7 @@ const MyCart = ({ id, title, image, quantity, unitPrice, setPrice, price}) => {
                     isClosable: true,
                 });
             })
-            .catch(()=> {
+            .catch(() => {
                 toast({
                     title: 'Error Ouccured!',
                     description: "Whoops, devils work!",
@@ -87,7 +87,7 @@ const MyCart = ({ id, title, image, quantity, unitPrice, setPrice, price}) => {
                     duration: 2400,
                     isClosable: true,
                 })
-            }) 
+            })
             .finally(() => {
                 setLoad(false);
             });

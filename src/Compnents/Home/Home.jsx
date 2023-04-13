@@ -9,6 +9,7 @@ import img1 from '../../Images/brand1.jpg';
 import img2 from '../../Images/brand2.jpg';
 import FeaturedProducts from '../Featured Products/FeaturedProducts';
 import Footer from '../Footer/Footer';
+import Loader from '../Loader/Loader';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -17,7 +18,6 @@ const Home = () => {
         fetchAllData();
     }, []);
     const fetchAllData = () => {
-        console.log('ok')
         client.get('/product/get-products').then((resp) => {
             try {
                 dispatch({
@@ -36,28 +36,28 @@ const Home = () => {
     ];
 
     return (
-    <>
-        <div className='home-container'>
-            <div className='branding'>
-                <div className='main-brand'>
-                    <span>J</span>
-                    <span>E</span>
-                    <span>E</span>
-                    <span>Z</span>
+        <>
+            <div className='home-container'>
+                <div className='branding'>
+                    <div className='main-brand'>
+                        <span>J</span>
+                        <span>E</span>
+                        <span>E</span>
+                        <span>Z</span>
+                    </div>
+                    <div>Get ready to turn heads with Jeez fashion</div>
                 </div>
-                <div>Get ready to turn heads with Jeez fashion</div>
+
+                <div className='branding-images'>
+                    <img src={images[0]} alt="" />
+                    <img src={images[1]} alt="" />
+                </div>
             </div>
-            
-            <div className='branding-images'>
-                <img src={images[0]} alt="" />
-                <img src={images[1]} alt="" />
-            </div>
-        </div>
-        <div className='feature-heading'>
+            <div className='feature-heading'>
                 Featured Products
-        </div>
-        {featureLoading && <FeaturedProducts/>}
-    </>
+            </div>
+            {(!featureLoading && <Loader/>) || <FeaturedProducts />}
+        </>
     );
 };
 

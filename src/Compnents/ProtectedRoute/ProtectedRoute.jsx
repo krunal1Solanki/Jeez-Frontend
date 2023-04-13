@@ -5,19 +5,19 @@ import { Navigate } from 'react-router-dom'
 import { client } from '../../Client'
 import { Puff } from 'react-loader-spinner';
 import './protected.css'
-const ProtectedRoute = ({Component}) => {
+const ProtectedRoute = ({ Component }) => {
   const [auth, setAuth] = useState(null);
-    useEffect(()=> {
+  useEffect(() => {
     client.get('/user/check-auth')
-    .then(()=> {
+      .then(() => {
         setAuth(true);
-    })
-    .catch(()=> {
+      })
+      .catch(() => {
         setAuth(false);
-    })
+      })
   }, [])
-    return (    
-        <div className="loader-container">
+  return (
+    <div className="loader-container">
       {
         auth === null
           ?

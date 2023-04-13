@@ -1,7 +1,6 @@
 {
   "name": "ecommerce",
   "version": "0.1.0",
-  "proxy" : "https://jeez-production.up.railway.app",
   "dependencies": {
     "@chakra-ui/icons": "^2.0.18",
     "@chakra-ui/react": "^2.5.5",
