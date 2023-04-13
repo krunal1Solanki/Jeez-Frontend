@@ -1,0 +1,12 @@
+.add-product-container {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    justify-content: center;
+    background-color: dodgerblue;
+}
+.add-product-page {
+    width: 100%;
+    min-height: 100vh;
+}

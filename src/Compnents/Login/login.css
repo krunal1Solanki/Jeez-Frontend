@@ -1,0 +1,11 @@
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 89vh;
+    background: dodgerblue;
+}
+
+body {
+    background-color: dodgerblue;
+}

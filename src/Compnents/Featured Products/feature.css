@@ -1,0 +1,7 @@
+.feature-cart {
+    display: flex;
+    margin-bottom: 70px;
+    align-items: center;
+    justify-content: center;
+    gap : 10px;
+}

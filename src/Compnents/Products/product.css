@@ -1,0 +1,19 @@
+.carts {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 70%;
+    margin : 0 auto;
+    gap : 50px;
+    margin-top: 30px;
+}
+
+
+.extra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 40px;
+}
